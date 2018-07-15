@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Play_AI</title>
+</head>
+<script src="/static/jquery-3.3.1.min.js"></script>
+<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+<script src="/static/Recorder.js"></script>
+
+<body style="text-align: center">
+<div id="status_str">准备就绪</div>
+<div id="content1"></div>
+<div id="content2"></div>
+
+<audio id="play_audio" src="/static/audio_file/auido.mp3" autoplay="autoplay">
+    Your browser does not support the audio element.
+</audio>
+<div>
+    <button onclick="start_stop(this)" value="1">跟它说话</button>
+</div>
+</body>
+
+<script>
+    var status_str = document.getElementById("status_str");
+    var now_time = new Date().toString();
+    var user_id = md5(now_time);
+
+    var global_button;
+
+    console.log(user_id);
+
+    function play_anything(src_str) {
+        var a = document.getElementById("play_audio");
+        var content1 = document.getElementById("content1");
+        var content2 = document.getElementById("content2");
+        if (src_str.play_type == "music") {
+            a.src = src_str.res_name
+        } else {
+            a.src = "/static/audio_file/" + src_str.res_name;
+            content1.innerHTML=src_str.content1
+            content2.innerHTML=src_str.content2
+        }
+    }
+
+    function text_audio() {
+        var data = document.getElementById("audio_content").value;
+        var str = {
+            audio_text: data,
+            user_id: user_id
+        };
+        console.log(str);
+
+    }
+
+    function __log(e, data) {
+        log.innerHTML += "\n" + e + " " + (data || '');
+    }
+
+    var recorder;
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var audio_context = new AudioContext();
+    navigator.getUserMedia = (navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia);
+    navigator.getUserMedia({audio: true}, startUserMedia, function (e) {
+        console.log('No live audio_pcm input: ' + e);
+    });
+
+    function startUserMedia(stream) {
+        var input = audio_context.createMediaStreamSource(stream);
+        recorder = new Recorder(input);
+    }
+
+    function start_stop(button) {
+        global_button = button;
+        if (button.value == "1") {
+            button.value = "2";
+            button.innerHTML = "我说完了";
+            startRecording();
+
+        } else {
+            button.enabled = true;
+            stopRecording();
+        }
+    }
+
+    function startRecording() {
+        status_str.innerHTML = "正在聆听......";
+        recorder && recorder.record();
+    }
+
+    function stopRecording() {
+        status_str.innerText = "倾听结束......";
+        recorder && recorder.stop();
+
+        // create WAV download link using audio_pcm data blob
+        //createDownloadLink();
+        uploadToServer();
+
+        recorder.clear();
+    }
+
+    function uploadToServer() {
+        recorder && recorder.exportWAV(function (blob) {
+            console.log(blob);
+            status_str.innerText = "正在理解......";
+            var fileType = 'wav';
+            var fileName = new Date().valueOf() + '.' + fileType;
+            var url = 'http://localhost:5000/upload_audio';
+
+            // create FormData
+            var formData = new FormData();
+            formData.append("name",fileName);
+            formData.append("user_id",user_id)
+            formData.append("file",blob);
+            $.ajax(
+                {
+                    method: "POST",
+                    url: url,
+                    data: formData,
+                    dataType: 'json',
+                    processData: false,  // 不处理数据
+                    contentType: false ,  // 不设置内容类型
+                    success: function (res_data) {
+                        console.log(res_data);
+                        status_str.innerText = "正在诉说......";
+                        global_button.enabled = false;
+                        global_button.value = "1";
+                        global_button.innerHTML = "跟它说话";
+
+
+                        play_anything(res_data);
+                    }
+                }
+            )
+        });
+    }
+</script>
+</html>
