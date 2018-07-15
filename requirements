@@ -1,0 +1,4 @@
+flask==1.0.2
+Jinji2==2.10
+baidu-aip==2.2.5.2
+requests==2.19.1
