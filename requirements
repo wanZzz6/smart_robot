@@ -2,3 +2,5 @@ flask==1.0.2
 Jinji2==2.10
 baidu-aip==2.2.5.2
 requests==2.19.1
+gensim==3.5.0
+jieba==0.39
