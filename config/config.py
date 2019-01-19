@@ -6,7 +6,7 @@ music_exe = r'E:\软件安装\CloudMusic\cloudmusic.exe'
 music_dir = 'D:\网易云音乐'
 
 # 截图保存路径，放桌面比较方便
-capture_save_path = r'C:\Users\wanzheng\Desktop'
+capture_save_path = r'C:\Users\xxxx\Desktop'
 
 #音频角色，音量，语速调节 参照百度云服务 文档
 #https://cloud.baidu.com/doc/SPEECH/TTS-Online-Python-SDK.html#.E5.BF.AB.E9.80.9F.E5.85.A5.E9.97.A8
