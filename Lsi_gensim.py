@@ -3,10 +3,8 @@ from gensim import corpora
 from gensim import models
 from gensim import similarities
 
-
-l1 = ["你的名字是什么", "你今年几岁了", "你会敲代码吗", '你会干什么','屏幕截图',
-      '我想听音乐','我想敲代码','百度搜索','播放音乐','打开记事本']  # 标准问题
-
+l1 = ["你的名字是什么", "你今年几岁了", "你会敲代码吗", '你会干什么', '屏幕截图',
+      '我想听音乐', '我想敲代码', '百度搜索', '播放音乐', '打开记事本']  # 标准问题
 
 
 # dictionary = []
@@ -41,7 +39,6 @@ def get_high_sim(doc, index_matrix):
     sim = index_matrix[lsi[doc_test_vec]]
 
     # 对下标和相似度结果进行一个排序,拿出相似度最高的结果
-
     cc = sorted(enumerate(sim), key=lambda item: -item[1])
     print(cc)
     high_score = cc[0]
@@ -49,14 +46,13 @@ def get_high_sim(doc, index_matrix):
 
     print(doc, '-------', text)
     print('相似度：', high_score[1])
-    if high_score[1]>0.6 :
+    if high_score[1] > 0.6:
         return cc[0][0]
+
 
 index = get_index_matrix()
 
 if __name__ == '__main__':
-
     a = "你今年多大了"
     doc_index = get_high_sim(a, index)
     print(doc_index)
-

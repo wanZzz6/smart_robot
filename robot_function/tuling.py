@@ -5,7 +5,7 @@ api = 'http://www.tuling123.com/openapi/api'
 
 
 def chat_robot(info):
-    '''返回图灵机器人回答信息'''
+    """返回图灵机器人回答信息"""
     if not info:
         print('请讲话')
         return
@@ -24,11 +24,12 @@ def chat_robot(info):
             result.pop('code')
             text = result.pop('text')
             other_text = '\n'.join([i for i in result.values()])
-            return  (text,other_text)
+            return text, other_text
         else:
-            return  (robot_error[result['code']])
+            return robot_error[result['code']],
     else:
-        return ('网络错误，机器人连接失败！')
-if __name__ == '__main__':
+        return '网络错误，机器人连接失败！',
 
+
+if __name__ == '__main__':
     print(chat_robot('你好'))
