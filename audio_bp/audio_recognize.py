@@ -1,38 +1,40 @@
 from flask import Blueprint
 from flask import request
 from flask import jsonify
-from baidu_ai import baidu_API
-from robot_function.tuling import chat_robot
 from Lsi_gensim import get_high_sim, index
+from robot_function.tuling import chat_robot
+from baidu_ai import baidu_API
+
+au_bp = Blueprint("a", __name__, static_folder='saudio_template')
 
 
-au_bp= Blueprint("a", __name__, static_folder='saudio_template')
-
-@au_bp.route("/upload_audio",methods=["GET","POST"])  # 上传音频文件(非PCM格式)
+@au_bp.route("/upload_audio", methods=["GET", "POST"])  # 上传音频文件(非PCM格式)
 def upload():
     file_info = request.values.to_dict()
     # print(file_info)
     file_name = file_info["name"]  # 前端获取文件名
     user_id = file_info["user_id"]  # 前端获取User_id
 
-    audio_file = request.files["file"] # 历史录音文件
+    audio_file = request.files["file"]  # 历史录音文件
     # print(audio_file)
-    audio_name= "static/audio_file/%s" % (file_name)
+    audio_name = "static/audio_file/%s" % (file_name)
     audio_file.save(audio_name)
 
-    #进行语音识别
+    # 进行语音识别
     audio_text = baidu_API.audio2text(audio_name)
     print('识别结果：', audio_text)
     other_info = ''
-    if not audio_text.startswith('Sorry') :
+
+    if not audio_text.startswith('Sorry'):
         doc_index = get_high_sim(audio_text, index)
-        print(doc_index,'-----------')
+        # print(doc_index,'-----------')
         if doc_index is not None:
             if doc_index == 8:
                 try:
-                    keyword = audio_text[audio_text.rfind('播放')+2:]
+                    # 获取 歌曲名
+                    keyword = audio_text[audio_text.rfind('播放') + 2:]
                     print('播放', keyword)
-                    answer,other_info = baidu_API.nlp_simnet(doc_index, keyword)
+                    answer, other_info = baidu_API.nlp_simnet(doc_index, keyword)
                 except Exception as e:
                     print(e)
                     answer = '播放失败'
@@ -43,7 +45,6 @@ def upload():
                 except Exception as e:
                     print(e)
                     answer = '搜索失败'
-
             else:
                 answer = baidu_API.nlp_simnet(doc_index)
         else:
@@ -58,7 +59,7 @@ def upload():
     # 返回信息
     ret_str = {
         "play_type": "talk",
-        "res_name": play_audio , # 被播放的文件名
+        "res_name": play_audio,  # 被播放的文件名
         "content1": audio_text,
         "content2": answer
     }

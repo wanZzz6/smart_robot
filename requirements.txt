@@ -1,0 +1,8 @@
+flask==1.0.2
+baidu-aip==2.2.5.2
+requests==2.19.1
+gensim==3.5.0
+jieba==0.39
+selenium==3.141.0
+pymysql==0.9.2
+pywin32

@@ -3,23 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <title>Play_AI</title>
+    <link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/default.css">
+	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="static/css/Icomoon/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="static/js/jquery-2.0.2.min.js"></script>
+	<script type="text/javascript" src="static/js/main.js"></script>
+	<style>
+	#loading{
+		background-color: #efc94c;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		margin-top: 0px;
+		top: 0px;
+	}
+	#loading-center{
+		width: 100%;
+		height: 100%;
+		position: relative;
+		}
+	#loading-center-absolute {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 50px;
+		width: 150px;
+		margin-top: -295px;
+		margin-left: -75px;
+
+	}
+	.object{
+		width: 8px;
+		height: 50px;
+		margin-right:5px;
+		background-color: #FFF;
+		-webkit-animation: animate 1s infinite;
+		animation: animate 1s infinite;
+		float: left;
+		}
+
+	.object:last-child {
+		margin-right: 0px;
+		}
+
+	.object:nth-child(10){
+		-webkit-animation-delay: 0.9s;
+	    animation-delay: 0.9s;
+		}
+	.object:nth-child(9){
+		-webkit-animation-delay: 0.8s;
+	    animation-delay: 0.8s;
+		}
+	.object:nth-child(8){
+		-webkit-animation-delay: 0.7s;
+	    animation-delay: 0.7s;
+		}
+	.object:nth-child(7){
+		-webkit-animation-delay: 0.6s;
+	    animation-delay: 0.6s;
+		}
+	.object:nth-child(6){
+		-webkit-animation-delay: 0.5s;
+	    animation-delay: 0.5s;
+		}
+	.object:nth-child(5){
+		-webkit-animation-delay: 0.4s;
+	    animation-delay: 0.4s;
+		}
+	.object:nth-child(4){
+		-webkit-animation-delay: 0.3s;
+	    animation-delay: 0.3s;
+		}
+	.object:nth-child(3){
+		-webkit-animation-delay: 0.2s;
+	    animation-delay: 0.2s;
+		}
+	.object:nth-child(2){
+		-webkit-animation-delay: 0.1s;
+	    animation-delay: 0.1s;
+		}
+	@-webkit-keyframes animate {
+
+	  50% {
+		-ms-transform: translateX(-25px) scaleY(0.5);
+	   	-webkit-transform: translateX(-25px) scaleY(0.5);
+	    transform: translateX(-25px) scaleY(0.5);
+		  }
+	}
+
+	@keyframes animate {
+	  50% {
+		-ms-transform: translateX(-25px) scaleY(0.5);
+	   	-webkit-transform: translateX(-25px) scaleY(0.5);
+	    transform: translateX(-25px) scaleY(0.5);
+		  }
+	}
+	</style>
+
 </head>
 <script src="/static/jquery-3.3.1.min.js"></script>
 <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
 <script src="/static/Recorder.js"></script>
 
 <body style="text-align: center">
-<div id="status_str">准备就绪</div>
-<div id="content1"></div>
-<div id="content2"></div>
 
-<audio id="play_audio" src="/static/audio_file/auido.mp3" autoplay="autoplay">
-    Your browser does not support the audio element.
-</audio>
-<div>
-    <button onclick="start_stop(this)" value="1">跟它说话</button>
-</div>
+
+
+<div id="loading">
+    <div style="height: 30px"></div>
+
+        <div align="center"><img src="static/wq.jpeg" alt=""><br></div>
+    <div style="height: 20px"></div>
+        <div id="status_str">准备就绪</div>
+        <div id="content1"></div>
+        <div id="content2"></div>
+
+        <audio id="play_audio" src="/static/audio_file/auido.mp3" autoplay="autoplay">
+            Your browser does not support the audio element.
+        </audio>
+        <div>
+            <button onclick="start_stop(this)" value="1"  style="background-color: #7ED321;color:#404d5b" >跟它说话</button>
+        </div>
+
+		<div id="loading-center">
+
+			<div id="loading-center-absolute">
+                <div style="height:100px; "></div>
+
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+				<div class="object"></div>
+			</div>
+		</div>
+	</div>
+
+
+
 </body>
+
 
 <script>
     var status_str = document.getElementById("status_str");

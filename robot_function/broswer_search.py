@@ -1,15 +1,14 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.remote.errorhandler import WebDriverException
-import time
-
-
 
 driver = ''
+
 
 def startChrom():
     try:
         driver = webdriver.Chrome()
-        # chrom浏览器窗口位置
+        # 设置Chrom浏览器窗口位置
         driver.set_window_rect(x=812, y=0, width=731, height=831)
         time.sleep(1)
         return driver
