@@ -48,7 +48,7 @@ def upload():
             else:
                 answer = baidu_API.nlp_simnet(doc_index)
         else:
-            answer = chat_robot(audio_text)[0]
+            answer = chat_robot(audio_text)
             print('机器人回答:', answer)
     else:
         answer = audio_text
