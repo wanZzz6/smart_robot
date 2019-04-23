@@ -5,6 +5,16 @@ music_exe = r'E:\CloudMusic\cloudmusic.exe'
 # 也可以自己写爬虫去各大音乐网站下载到本地，然后播放，或者直接返回到前端
 music_dir = r'D:\网易云音乐'
 
+# 按照自己电脑的音乐播放器 设置快捷键，键盘映射对照表参照 keyboard.py
+# 播放/暂停 快捷键
+play_stop = ['alt', 'F5']
+# 下一首/ 上一首
+next_play = ['alt', 'right_arrow']
+former_play = ['alt', 'left_arrow']
+# 音量加/ 音量减
+volume_up = ['alt','up_arrow']
+volume_dowm = ['alt', 'down_arrow']
+
 # 是否用本地音乐播放器 播放
 play_local = True
 
