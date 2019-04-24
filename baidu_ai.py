@@ -6,7 +6,7 @@ import time
 import os
 from robot_function.sc_capture import capture
 from robot_function.broswer_search import search_kw
-from robot_function.play_song import play_song
+from robot_function.play_song import play_song, play_function
 from config.config import music_exe, role_param
 from mysql import read_answer
 
@@ -63,7 +63,6 @@ class BaiduApi(object):
     def nlp_simnet(self, doc_index, key_world='百度'):
         if doc_index < 4:
             return read_answer(doc_index)
-
         elif doc_index == 4:
             # 等待一秒调整截图屏幕，转到要截图的界面
             time.sleep(1)
@@ -80,14 +79,17 @@ class BaiduApi(object):
             search_kw(key_world)
             return '好的'
         elif doc_index == 8:
+            os.system('notepad')
+            return '已经打开记事本'
+        elif doc_index == 9:
             song_name = play_song(key_world)
             if song_name:
                 return '好的', song_name
             else:
-                return search_kw(key_world)
-        elif doc_index == 9:
-            os.system('notepad')
-            return '已经打开记事本'
+                return search_kw(key_world),
+        elif 10 <= doc_index <= 14:
+            play_function(doc_index)
+            return ''
         else:
             return '没有回答'
 

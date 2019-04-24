@@ -29,7 +29,7 @@ def upload():
         doc_index = get_high_sim(audio_text, index)
         # print(doc_index,'-----------')
         if doc_index is not None:
-            if doc_index == 8:
+            if doc_index == 9:
                 try:
                     # 获取 歌曲名
                     keyword = audio_text[audio_text.rfind('播放') + 2:]

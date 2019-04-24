@@ -12,7 +12,7 @@ play_stop = ['alt', 'F5']
 next_play = ['alt', 'right_arrow']
 former_play = ['alt', 'left_arrow']
 # 音量加/ 音量减
-volume_up = ['alt','up_arrow']
+volume_up = ['alt', 'up_arrow']
 volume_dowm = ['alt', 'down_arrow']
 
 # 是否用本地音乐播放器 播放
