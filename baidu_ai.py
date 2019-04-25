@@ -57,7 +57,7 @@ class BaiduApi(object):
         if result['err_no'] == 0:
             # 返回音频内的文本
             return ' '.join(result['result'])
-
+        print(result)
         return 'Sorry！' + recog_error.get(result['err_no'])
 
     def nlp_simnet(self, doc_index, key_world='百度'):
@@ -89,7 +89,7 @@ class BaiduApi(object):
                 return search_kw(key_world),
         elif 10 <= doc_index <= 14:
             play_function(doc_index)
-            return ''
+            return '好的'
         else:
             return '没有回答'
 
