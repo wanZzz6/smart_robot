@@ -3,149 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <title>Play_AI</title>
-    <link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/default.css">
-	<link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="static/css/Icomoon/style.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="static/js/jquery-2.0.2.min.js"></script>
-	<script type="text/javascript" src="static/js/main.js"></script>
-	<style>
-	#loading{
-		background-color: #efc94c;
-		height: 100%;
-		width: 100%;
-		position: fixed;
-		z-index: 1;
-		margin-top: 0px;
-		top: 0px;
-	}
-	#loading-center{
-		width: 100%;
-		height: 100%;
-		position: relative;
-		}
-	#loading-center-absolute {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		height: 50px;
-		width: 150px;
-		margin-top: -295px;
-		margin-left: -75px;
+    <link rel="stylesheet" type="text/css" href="static/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/default.css">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/css/Icomoon/style.css" rel="stylesheet" type="text/css"/>
+    {#    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>#}
+    <script type="text/javascript" src="static/js/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript" src="static/js/main.js"></script>
+    <style>
+        #loading {
+        background-color: #a3a4ce; height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            margin-top: 0px;
+            top: 0px;
+        }
 
-	}
-	.object{
-		width: 8px;
-		height: 50px;
-		margin-right:5px;
-		background-color: #FFF;
-		-webkit-animation: animate 1s infinite;
-		animation: animate 1s infinite;
-		float: left;
-		}
+        #loading-center {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
 
-	.object:last-child {
-		margin-right: 0px;
-		}
+        #loading-center-absolute {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 50px;
+            width: 150px;
+            margin-top: -295px;
+            margin-left: -75px;
 
-	.object:nth-child(10){
-		-webkit-animation-delay: 0.9s;
-	    animation-delay: 0.9s;
-		}
-	.object:nth-child(9){
-		-webkit-animation-delay: 0.8s;
-	    animation-delay: 0.8s;
-		}
-	.object:nth-child(8){
-		-webkit-animation-delay: 0.7s;
-	    animation-delay: 0.7s;
-		}
-	.object:nth-child(7){
-		-webkit-animation-delay: 0.6s;
-	    animation-delay: 0.6s;
-		}
-	.object:nth-child(6){
-		-webkit-animation-delay: 0.5s;
-	    animation-delay: 0.5s;
-		}
-	.object:nth-child(5){
-		-webkit-animation-delay: 0.4s;
-	    animation-delay: 0.4s;
-		}
-	.object:nth-child(4){
-		-webkit-animation-delay: 0.3s;
-	    animation-delay: 0.3s;
-		}
-	.object:nth-child(3){
-		-webkit-animation-delay: 0.2s;
-	    animation-delay: 0.2s;
-		}
-	.object:nth-child(2){
-		-webkit-animation-delay: 0.1s;
-	    animation-delay: 0.1s;
-		}
-	@-webkit-keyframes animate {
+        }
 
-	  50% {
-		-ms-transform: translateX(-25px) scaleY(0.5);
-	   	-webkit-transform: translateX(-25px) scaleY(0.5);
-	    transform: translateX(-25px) scaleY(0.5);
-		  }
-	}
+        .object {
+            width: 8px;
+            height: 50px;
+            margin-right: 5px;
+            background-color: #FFF;
+            -webkit-animation: animate 1s infinite;
+            animation: animate 1s infinite;
+            float: left;
+        }
 
-	@keyframes animate {
-	  50% {
-		-ms-transform: translateX(-25px) scaleY(0.5);
-	   	-webkit-transform: translateX(-25px) scaleY(0.5);
-	    transform: translateX(-25px) scaleY(0.5);
-		  }
-	}
-	</style>
+        .object:last-child {
+            margin-right: 0px;
+        }
+
+        .object:nth-child(10) {
+            -webkit-animation-delay: 0.9s;
+            animation-delay: 0.9s;
+        }
+
+        .object:nth-child(9) {
+            -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s;
+        }
+
+        .object:nth-child(8) {
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+
+        .object:nth-child(7) {
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+
+        .object:nth-child(6) {
+            -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+        }
+
+        .object:nth-child(5) {
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+
+        .object:nth-child(4) {
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        .object:nth-child(3) {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+
+        .object:nth-child(2) {
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+        }
+
+        @-webkit-keyframes animate {
+
+            50% {
+                -ms-transform: translateX(-25px) scaleY(0.5);
+                -webkit-transform: translateX(-25px) scaleY(0.5);
+                transform: translateX(-25px) scaleY(0.5);
+            }
+        }
+
+        @keyframes animate {
+            50% {
+                -ms-transform: translateX(-25px) scaleY(0.5);
+                -webkit-transform: translateX(-25px) scaleY(0.5);
+                transform: translateX(-25px) scaleY(0.5);
+            }
+        }
+    </style>
 
 </head>
 <script src="/static/jquery-3.3.1.min.js"></script>
 <script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
-<script src="/static/Recorder.js"></script>
+<script src="/static/js/recorder.js"></script>
 
 <body style="text-align: center">
-
 
 
 <div id="loading">
     <div style="height: 30px"></div>
 
-        <div align="center"><img src="static/wq.jpeg" alt=""><br></div>
+    <div align="center"><img src="static/wq.jpeg" alt=""><br></div>
     <div style="height: 20px"></div>
-        <div id="status_str">准备就绪</div>
-        <div id="content1"></div>
-        <div id="content2"></div>
+    <div id="status_str">准备就绪</div>
+    <br>
+    <div id="content1"></div>
+    <div id="content2"></div>
 
-        <audio id="play_audio" src="/static/audio_file/auido.mp3" autoplay="autoplay">
-            Your browser does not support the audio element.
-        </audio>
-        <div>
-            <button onclick="start_stop(this)" value="1"  style="background-color: #7ED321;color:#404d5b" >跟它说话</button>
+    <audio id="play_audio" src="/static/audio_file/auido.mp3" autoplay="autoplay">
+        Your browser does not support the audio element.
+    </audio>
+    <div>
+        <button id="start_stop" value="1" style="background-color: #7ED321;color:#404d5b">跟它说话</button>
+    </div>
+
+    <div id="loading-center">
+
+        <div id="loading-center-absolute">
+            <div style="height:100px; "></div>
+
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
         </div>
-
-		<div id="loading-center">
-
-			<div id="loading-center-absolute">
-                <div style="height:100px; "></div>
-
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-				<div class="object"></div>
-			</div>
-		</div>
-	</div>
-
+    </div>
+</div>
 
 
 </body>
@@ -156,95 +167,65 @@
     var now_time = new Date().toString();
     var user_id = md5(now_time);
 
-    var global_button;
 
     console.log(user_id);
+    window.onload = function () {
+        var start_stop = document.querySelector('#start_stop');
 
-    function play_anything(src_str) {
-        var a = document.getElementById("play_audio");
-        var content1 = document.getElementById("content1");
-        var content2 = document.getElementById("content2");
-        if (src_str.play_type == "music") {
-            a.src = src_str.res_name
-        } else {
-            a.src = "/static/audio_file/" + src_str.res_name;
-            content1.innerHTML=src_str.content1
-            content2.innerHTML=src_str.content2
+        var recorder = new Recorder({
+            sampleRate: 44100, //采样频率，默认为44100Hz(标准MP3采样率)
+            bitRate: 128, //比特率，默认为128kbps(标准MP3质量)
+            success: function () { //成功回调函数
+                start_stop.disabled = false;
+            },
+            error: function (msg) { //失败回调函数
+                alert(msg);
+            },
+            fix: function (msg) { //不支持H5录音回调函数
+                alert(msg);
+            }
+        });
+
+        function play_anything(src_str) {
+            var a = document.getElementById("play_audio");
+            var content1 = document.getElementById("content1");
+            var content2 = document.getElementById("content2");
+            if (src_str.play_type == "music") {
+                a.src = src_str.res_name
+            } else {
+                a.src = "/static/audio_file/" + src_str.res_name;
+                content1.innerHTML = src_str.content1
+                content2.innerHTML = src_str.content2
+            }
         }
-    }
 
-    function text_audio() {
-        var data = document.getElementById("audio_content").value;
-        var str = {
-            audio_text: data,
-            user_id: user_id
-        };
-        console.log(str);
+        start_stop.addEventListener('click', function () {
+            if (start_stop.value == "1") {
+                start_stop.value = "2";
+                status_str.innerHTML = "正在聆听......";
+                start_stop.innerHTML = "我说完了";
+                recorder.start();
+            } else {
+                status_str.innerText = "倾听结束......";
+                start_stop.innerHTML = "诉说";
+                recorder.stop();
+                recorder.getBlob(function (blob) {
+                    uploadToServer(blob)
+                });
+            }
+        });
 
-    }
-
-    function __log(e, data) {
-        log.innerHTML += "\n" + e + " " + (data || '');
-    }
-
-    var recorder;
-    var AudioContext = window.AudioContext || window.webkitAudioContext;
-    var audio_context = new AudioContext();
-    navigator.getUserMedia = (navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia);
-    navigator.getUserMedia({audio: true}, startUserMedia, function (e) {
-        console.log('No live audio_pcm input: ' + e);
-    });
-
-    function startUserMedia(stream) {
-        var input = audio_context.createMediaStreamSource(stream);
-        recorder = new Recorder(input);
-    }
-
-    function start_stop(button) {
-        global_button = button;
-        if (button.value == "1") {
-            button.value = "2";
-            button.innerHTML = "我说完了";
-            startRecording();
-
-        } else {
-            button.enabled = true;
-            stopRecording();
-        }
-    }
-
-    function startRecording() {
-        status_str.innerHTML = "正在聆听......";
-        recorder && recorder.record();
-    }
-
-    function stopRecording() {
-        status_str.innerText = "倾听结束......";
-        recorder && recorder.stop();
-
-        // create WAV download link using audio_pcm data blob
-        //createDownloadLink();
-        uploadToServer();
-
-        recorder.clear();
-    }
-
-    function uploadToServer() {
-        recorder && recorder.exportWAV(function (blob) {
-            console.log(blob);
+        function uploadToServer(blob) {
             status_str.innerText = "正在理解......";
-            var fileType = 'wav';
+            var fileType = 'mp3';
             var fileName = new Date().valueOf() + '.' + fileType;
-            var url = 'http://localhost:5000/upload_audio';
+            var url = 'http://127.0.0.1:5000/upload_audio';
 
             // create FormData
             var formData = new FormData();
-            formData.append("name",fileName);
-            formData.append("user_id",user_id)
-            formData.append("file",blob);
+            formData.append("name", fileName);
+            formData.append("user_id", user_id)
+            formData.append("file", blob);
             $.ajax(
                 {
                     method: "POST",
@@ -252,20 +233,19 @@
                     data: formData,
                     dataType: 'json',
                     processData: false,  // 不处理数据
-                    contentType: false ,  // 不设置内容类型
+                    contentType: false,  // 不设置内容类型
                     success: function (res_data) {
                         console.log(res_data);
                         status_str.innerText = "正在诉说......";
-                        global_button.enabled = false;
-                        global_button.value = "1";
-                        global_button.innerHTML = "跟它说话";
-
+                        start_stop.enabled = false;
+                        start_stop.value = "1";
+                        start_stop.innerHTML = "跟它说话";
 
                         play_anything(res_data);
                     }
                 }
             )
-        });
+        }
     }
 </script>
 </html>
