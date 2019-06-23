@@ -69,17 +69,17 @@ class BaiduApi(object):
             capture()
             return '截图完成'
         elif doc_index == 5:
-            os.system(music_exe)  # 网易云运行路径
+            os.popen(music_exe)  # 网易云运行路径
             return '好的'
         elif doc_index == 6:
             os.environ['PATH'] += r';E:\SoftInstall\Sublime Text 3'
-            os.system('subl')  # 打开 shublime Text 前提是，安装目录添加到换件变量
+            os.popen('subl')  # 打开 shublime Text 前提是，安装目录添加到换件变量
             return '好的'
         elif doc_index == 7:
             search_kw(key_world)
             return '好的'
         elif doc_index == 8:
-            os.system('notepad')
+            os.popen('notepad')
             return '已经打开记事本'
         elif doc_index == 9:
             song_name = play_song(key_world)
@@ -101,3 +101,5 @@ if __name__ == '__main__':
     # 将输出文件名替换原smart_robot\static\audio_file\auido.mp3）
     bd = BaiduApi()
     bd.text2audio('欢迎使用！')
+    a = baidu_API.audio2text(r'D:\GitHub_clone\smart_robot\static\audio_file\auido.mp3')
+    print(a)
