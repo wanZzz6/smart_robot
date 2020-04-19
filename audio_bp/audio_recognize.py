@@ -29,9 +29,6 @@ def upload():
     other_info = ''
 
     if not audio_text.startswith('Sorry'):
-        with open('../static/history.txt', 'a+', encoding='utf-8') as f:
-            timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-            f.write(timestamp+' 我>>>'+audio_text+'\n')
         doc_index = get_high_sim(audio_text, index)
         # print(doc_index,'-----------')
         if doc_index is not None:
@@ -55,9 +52,9 @@ def upload():
                 answer = baidu_API.nlp_simnet(doc_index)
         else:
             answer = chat_robot(audio_text)
-            with open('../static/history.txt', 'a+', encoding='utf-8') as f:
-                timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-                f.write(timestamp + ' 机器人>>>' + audio_text + '\n')
+            # with open('../static/history.txt', 'a+', encoding='utf-8') as f:
+            #     timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+            #     f.write(timestamp + ' 机器人>>>' + audio_text + '\n')
             print('机器人回答:', answer)
     else:
         answer = audio_text

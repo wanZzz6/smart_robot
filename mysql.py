@@ -20,7 +20,7 @@ def read_answer(q_id):
 
 print('正在连接数据库。。。', __name__)
 try:
-    connection = pymysql.connect('118.24.153.237', 'wangluo', '123abc.', 'QA', charset='utf8')
+    connection = pymysql.connect('127.0.0.1', 'root', '123456', 'QA', charset='utf8')
 except Exception as e:
     print('连接失败！', e)
     curser = None
