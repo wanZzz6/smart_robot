@@ -39,7 +39,8 @@ INSERT INTO `QA_list` VALUES (4, '屏幕截图', ',');
 INSERT INTO `QA_list` VALUES (5, '我想听音乐', ',');
 INSERT INTO `QA_list` VALUES (6, '我想敲代码', ',');
 INSERT INTO `QA_list` VALUES (7, '百度搜索', ',');
-INSERT INTO `QA_list` VALUES (8, '播放音乐', ',');
-INSERT INTO `QA_list` VALUES (9, '打开记事本', ',');
+INSERT INTO `QA_list` VALUES (8, '打开记事本', ',');
+INSERT INTO `QA_list` VALUES (9, '播放音乐', ',');
+
 
 SET FOREIGN_KEY_CHECKS = 1;

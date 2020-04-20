@@ -33,6 +33,11 @@ def window_capture(filename, box):
     #  参数 (原点)（右下点） mfcDC （左上点）
     saveDC.BitBlt((0, 0), (box[2], box[3]), mfcDC, (box[0], box[1]), win32con.SRCCOPY)
     saveBitMap.SaveBitmapFile(saveDC, filename)
+    # 释放内存，不然会造成资源泄漏
+    win32gui.DeleteObject(saveBitMap.GetHandle())
+    saveDC.DeleteDC()
+    mfcDC.DeleteDC()
+    win32gui.ReleaseDC(hwnd, hwndDC)
 
 
 # s1 = time.time()
@@ -44,3 +49,7 @@ def capture():
     time.sleep(1)
     # 用 系统默认 看图软件 打开
     os.system(file_name)
+
+
+if __name__ == '__main__':
+    capture()
